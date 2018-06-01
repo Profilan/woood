@@ -1,0 +1,41 @@
+<form id="userForm" action="/admin/user/list" method="post" class="adminForm" name="userForm">
+	<div class="toolbar-list">
+		<a class="btn" href="/admin/user/new" onclick="">
+			<span class="icon-plus"></span>
+			Nieuw
+		</a>
+		<a class="btn" href="#" onclick="">
+			<span class="icon-trash"></span>
+			Verwijderen
+		</a>
+	</div>
+	
+	<div class="clr"></div>
+	
+	<table id="users" class="table adminlist">
+		<thead>
+			<tr>
+				<th><input type="checkbox" onclick="checkAll(this)" /></th>
+				<th>Gebruikersnaam</th>
+				<th>E-mail</th>	
+				<th>Rol</th>
+				<th>ID</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php $i = 0; ?>
+			<?php foreach ($this->userList as $item) : ?>
+			<tr class="product" id="product<?php echo $item->getId(); ?>">
+				<td><input id="cb<?php echo $i; ?>" name="cid[]" type="checkbox" value="<?php echo $item->getId(); ?>" onclick="isChecked(this);" /></td>
+				<td><a href="/admin/user/edit/id/<? echo $item->getId(); ?>"><?php echo $item->getUsername(); ?></a></td>
+				<td><?php echo $item->getEmail(); ?></td>
+				<td><?php echo $item->getRole(); ?></td>
+				<td><?php echo $item->getId(); ?></td>
+			</tr>
+			<?php $i++; ?>
+			<?php endforeach;?>
+		</tbody>
+	</table>
+	
+	<input type="hidden" name="boxchecked" value="0" />
+</form>

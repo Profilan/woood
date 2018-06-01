@@ -1,0 +1,50 @@
+<?php 
+$this->headScript()->appendFile('/js/admin/user-form.js');
+?>
+
+<div id="container">
+	<div id="container-inner">
+		<form method="<?php echo $this->escape($this->element->getMethod()) ?>" 
+		    action="<?php echo $this->escape($this->element->getAction()) ?>">
+		    <fieldset>
+		    	<legend><span>Inloggegevens</span></legend>
+		        <div class="controls">
+					<?php echo $this->element->username->renderViewHelper() ?>
+					<?php echo $this->element->username->renderErrors() ?>
+		        </div>
+		    	<div class="controls">
+					<?php echo $this->element->email->renderViewHelper() ?>
+					<?php echo $this->element->email->renderErrors() ?>
+		        </div>
+		    	<div class="controls">
+		            <?php echo $this->element->password1->renderViewHelper() ?>
+					<?php echo $this->element->password1->renderErrors() ?>
+		        </div>
+				<div class="controls">
+					<?php echo $this->element->password2->renderViewHelper() ?>
+					<?php echo $this->element->password2->renderErrors() ?>
+		        </div>
+			</fieldset>
+		    
+		    <fieldset>
+		    	<legend><span>Overige gegevens</span></legend>
+		        <div class="controls controls-row">
+					<?php echo $this->element->api_key->renderViewHelper() ?>
+					<?php echo $this->element->api_key->renderErrors() ?>
+					<a id="generate-api-btn" class="btn"><?php echo _('Genereer API key'); ?></a>
+				</div>
+		        <div class="controls controls-row">
+					<?php echo $this->element->ip_from->renderViewHelper() ?>
+					<?php echo $this->element->ip_from->renderErrors() ?>
+					<?php echo $this->element->ip_to->renderViewHelper() ?>
+					<?php echo $this->element->ip_to->renderErrors() ?>
+		        </div>
+		    </fieldset>
+
+			<div class="controls controls-row">
+				<?php echo $this->element->submit->renderViewHelper() ?>
+				<a href="/admin/user/list" class="btn btn-link"><?php echo _('Terug'); ?></a>
+			</div>
+		</form>
+	</div>
+</div>

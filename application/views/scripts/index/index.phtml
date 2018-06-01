@@ -1,0 +1,35 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$('#searchButton').click(function(evt) {
+
+		var artikelcode = $('#artikelcode').val();
+		
+		$.ajax({
+	        url: 'https://is.woood.eu/api/voorraad/view',
+	        type: 'POST',
+	        data: { artikelcode: artikelcode },
+	        dataType: 'json',
+	        success: function(data) {
+	        	$('#result').html(data.Plankvoorraad);
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+				var status = textStatus;
+	        }
+	    });
+		
+	});
+	
+});
+</script>
+
+<form action="#" method="post">
+	<label for="artikelcode">Zoek artikel</label>
+	<input type="text" id="artikelcode" name="artikelcode" />
+	<button type="button" id="searchButton">Zoeken</button>
+</form>
+
+Plankvoorraad:
+<div id="result"></div>
